@@ -1,0 +1,15 @@
+
+# Python cache and test artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local environment and tooling files
+.env
+.venv/
+venv/
+.DS_Store
