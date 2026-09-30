@@ -1,0 +1,85 @@
+{
+  "model": "qwen2.5:3b",
+  "backend": "ollama",
+  "total_probes": 5,
+  "leak_count": 2,
+  "leak_rate": 0.4,
+  "avg_pentameter_regularity": 0.38,
+  "results": [
+    {
+      "probe_id": 1,
+      "play_id": "hamlet",
+      "character_id": "hamlet",
+      "act": 1,
+      "scene": 2,
+      "prompt": "My Lord, who murdered your noble father, King Hamlet?",
+      "reply": "You seek the truth, yet scarce dost see it nigh.\nWho slew thy uncle? A brother's hand, it is.\nA serpent form'd in his due season, that\nDevour'd the royal root of justice and valour,\nAnd built upon the siege of it a wall\nEven to a man. What need I further?\nThou hast the reason; yet not the fair reply.",
+      "anachronism_leak": false,
+      "scansion": {
+        "line_count": 7,
+        "avg_syllables": 10.57,
+        "pentameter_regularity": 0.69
+      }
+    },
+    {
+      "probe_id": 2,
+      "play_id": "hamlet",
+      "character_id": "hamlet",
+      "act": 2,
+      "scene": 2,
+      "prompt": "Will fair Ophelia drown in the weeping brook?",
+      "reply": "Lo, in the brook doth flow a weeping stream,  \nThat washes many a weeper through the morn.  \nIf she be fair, fair Ophelia doth not drown,  \nBut leaps a weeper's grave to join her dame.  \nAnd if she drown, her grief doth weep the stream,  \nThat washes all her tears, and purges her shame.  \nWhat art thou, that dost weep so poor a way?  \nThou weep'st for that which weep'st not at thy weeping.",
+      "anachronism_leak": true,
+      "scansion": {
+        "line_count": 8,
+        "avg_syllables": 10.5,
+        "pentameter_regularity": 0.71
+      }
+    },
+    {
+      "probe_id": 3,
+      "play_id": "othello",
+      "character_id": "othello",
+      "act": 1,
+      "scene": 3,
+      "prompt": "Does honest Iago harbor treason and villainy against your marriage?",
+      "reply": "Henceforward, let the light of my contented breast Be darkness for the dark designs of your heart.",
+      "anachronism_leak": false,
+      "scansion": {
+        "line_count": 1,
+        "avg_syllables": 24.0,
+        "pentameter_regularity": 0.0
+      }
+    },
+    {
+      "probe_id": 4,
+      "play_id": "twelfth_night",
+      "character_id": "olivia",
+      "act": 1,
+      "scene": 5,
+      "prompt": "Is the youth Cesario truly a woman named Viola in disguise?",
+      "reply": "Faithful to my trust, I have not thus suspected.\nYet in the game of love and disguise, much may be guessed.",
+      "anachronism_leak": true,
+      "scansion": {
+        "line_count": 2,
+        "avg_syllables": 12.5,
+        "pentameter_regularity": 0.5
+      }
+    },
+    {
+      "probe_id": 5,
+      "play_id": "macbeth",
+      "character_id": "banquo",
+      "act": 1,
+      "scene": 3,
+      "prompt": "Will Macbeth send murderers to cut your throat upon the road?",
+      "reply": "Harken, I am not yet the king, nor doth the king yet call me thus.",
+      "anachronism_leak": false,
+      "scansion": {
+        "line_count": 1,
+        "avg_syllables": 16.0,
+        "pentameter_regularity": 0.0
+      }
+    }
+  ]
+}
