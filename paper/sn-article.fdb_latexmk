@@ -1,20 +1,21 @@
 # Fdb version 4
-["bibtex sn-article"] 1790876368.37226 "sn-article.aux" "sn-article.bbl" "sn-article" 1790876455.59707 0
+["bibtex sn-article"] 1790877070.88355 "sn-article.aux" "sn-article.bbl" "sn-article" 1790877213.25733 0
   "./sn-basic.bst" 1790790290.27484 35515 7cc706cef7829df727b1420a5d0e9fe4 ""
   "./sn-bibliography.bib" 1790866064.51586 2749 874f032b4f27334fb1778a5c370b258f ""
-  "sn-article.aux" 1790876455.40817 5223 135bdbb76de0743d1fe5a4c7538bfc88 "pdflatex"
+  "sn-article.aux" 1790877213.05997 5467 7bb57f69b279155f11e9fc5737171b20 "pdflatex"
   (generated)
   "sn-article.bbl"
   "sn-article.blg"
   (rewritten before read)
-["pdflatex"] 1790876454.76264 "/home/djshaji/projects/characters/paper/sn-article.tex" "sn-article.pdf" "sn-article" 1790876455.59742 0
-  "/home/djshaji/projects/characters/paper/sn-article.tex" 1790876454.42018 17903 7cb6436c049a1eed9d075145af7746f4 ""
+["pdflatex"] 1790877212.34937 "/home/djshaji/projects/characters/paper/sn-article.tex" "sn-article.pdf" "sn-article" 1790877213.25764 0
+  "/home/djshaji/projects/characters/paper/sn-article.tex" 1790877210.99585 18464 f3dbc9b0414fb5fb289df1c519f73ed2 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy7.tfm" 1246382020 1120 7f9f170e8aa57527ad6c49feafd45d54 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm" 1246382020 996 a18840b13b499c08ac2de96a99eda4bc ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib5.tfm" 1246382020 1496 c79f6914c6d39ffb3759967363d1be79 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib7.tfm" 1246382020 1508 6e807ff901c35a5f1fde0ca275533df8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -54,6 +55,7 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1136768653 1120 8b7d695260f3cff42e636090a8002094 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti10.tfm" 1136768653 1480 aa8e34af0eb6a2941b776984cf1dfdc4 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm" 1136768653 768 1321e9409b4137d6fb428ac9dc956269 ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb" 1248133631 34793 87a84b12f86dfd35a1cf1bb142b75602 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1248133631 34811 78b52f49e893bcba91bd7581cdc144c0 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1248133631 32080 340ef9bf63678554ee606688e7b5339d ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb" 1248133631 32166 b0c356b15f19587482a9217ce1d8fa67 ""
@@ -147,9 +149,9 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1790789985 2299046 4a50864c780ec68992d8304a9c9771bf ""
   "fig1_scansion_distribution.pdf" 1790788879.38919 19304 645ecdd02fe265521500407e61de655c ""
   "fig2_ablation_comparison.pdf" 1790874552.8653 18131 b50ce20a01e8497d5abd1adef9267c72 ""
-  "sn-article.aux" 1790876455.40817 5223 135bdbb76de0743d1fe5a4c7538bfc88 "pdflatex"
-  "sn-article.bbl" 1790876368.39625 1121 c92cddffbcabebea09c8e60c722df23d "bibtex sn-article"
-  "sn-article.out" 1790876455.40917 4183 c868f3aac5806969bbd48f74f35022b2 "pdflatex"
+  "sn-article.aux" 1790877213.05997 5467 7bb57f69b279155f11e9fc5737171b20 "pdflatex"
+  "sn-article.bbl" 1790877073.48954 1133 e306d72fe132242c303ec8266d825bdc "bibtex sn-article"
+  "sn-article.out" 1790877213.06082 4183 c868f3aac5806969bbd48f74f35022b2 "pdflatex"
   "sn-jnl.cls" 1790789021.93845 55857 c14ef9d34b3d95356940eaf177aff85f ""
   (generated)
   "sn-article.aux"
