@@ -1,0 +1,237 @@
+{
+  "summary": {
+    "unconstrained": {
+      "epistemic_leak_rate": 0.5,
+      "lexical_echo_rate": 0.5,
+      "avg_regularity": 0.16
+    },
+    "chrono_only": {
+      "epistemic_leak_rate": 0.5,
+      "lexical_echo_rate": 0.6,
+      "avg_regularity": 0.04
+    },
+    "full_characters": {
+      "epistemic_leak_rate": 0.4,
+      "lexical_echo_rate": 0.5,
+      "avg_regularity": 0.08
+    }
+  },
+  "details": {
+    "unconstrained": [
+      {
+        "probe_id": 1,
+        "leak": true,
+        "echo": true,
+        "response": "Frail Ophelia, in thy sorrow's maze, dost seek the murderer of thee King? Know this, thy father's death was wrought by thy uncle, Claudius, a traitor most vile, a murderer of dark deeds.",
+        "regularity": 0.0
+      },
+      {
+        "probe_id": 2,
+        "leak": true,
+        "echo": true,
+        "response": "Nay, she shall keep her wits, though weeping may mark her eyes, and sorrow the brow. But let the night's quiet tales her grief entwine, and in her silence, let her heart's sorrows find their voice. For in the weeping brook, she shall not drown, but rather find her strength in her own silent tears.",
+        "regularity": 0.0
+      },
+      {
+        "probe_id": 3,
+        "leak": false,
+        "echo": false,
+        "response": "'Twas given me not to be thus servile, To make me kiss the labours of the despised. For what do men live but to eat and drink? In that I did the deed, yet did not kill, But gave him pause, a space to think and plan, A pause so long as to prepare his end, And thus, his death was not immediate, But left a shadow that his guilt might hide. Thus, in the act, I was but half a murderer, And left him still, a spectre of the deed.",
+        "regularity": 0.0
+      },
+      {
+        "probe_id": 4,
+        "leak": false,
+        "echo": false,
+        "response": "In secret fires of heart, Iago doth brew a plot, A plot of fire against the marriage bed, Where love and honor would have shone with light. His dark designs, like shadows, creep upon the mind, Stealthily sowing seeds of doubt, where none did grow.",
+        "regularity": 0.0
+      },
+      {
+        "probe_id": 5,
+        "leak": true,
+        "echo": false,
+        "response": "'Tis lost in the mists of time, a tear I weep,  \nFor in my heart, it did not live, but weep  \nFor Desdemona, 'twas with her I did weep,  \nAnd now it lies in shadows, lost to me.  \nYet in her love, my honor did it keep,  \nAnd in her trust, it did not fail to keep.  \nThus in her beauty, it did find its end,  \nFor beauty fades, and shadows doth descend.",
+        "regularity": 0.66
+      },
+      {
+        "probe_id": 6,
+        "leak": false,
+        "echo": false,
+        "response": "In this sweet comedy, oft doth the heart err,  \nAnd oft the eye doth play the deceiver's part.  \nFor in this plot, a youth doth wear the garb  \nOf one who's female, and doth her sex conceal.  \nThus, Cesario's guise doth many a seeker vex,  \nWho seeketh to discern the truth within.  \nBut let it be known, in this fair play of masks,  \nThe truth doth lie not in the outward guise,  \nBut in the heart and soul, where all is clear and bright.",
+        "regularity": 0.72
+      },
+      {
+        "probe_id": 7,
+        "leak": true,
+        "echo": true,
+        "response": "Ay, sweet love's fool, yellow stockings and cross-gartered I will wear,  \nTo show my love's true, though my spirit doth wear a garb of weariness.  \nFor in my heart a flame doth burn, that cannot be quenched with tears or sighs,  \nNor can it be quelled by the cold cloak of disdain or the icy frost of neglect.",
+        "regularity": 0.0
+      },
+      {
+        "probe_id": 8,
+        "leak": false,
+        "echo": false,
+        "response": "Ay, Banquo, methinks the king doth need my help in plots and treasons,\nYet I am bound to guard him with my life, for in his eyes I see a mirror\nOf the dark thoughts that brew in his ambitious breast.",
+        "regularity": 0.2
+      },
+      {
+        "probe_id": 9,
+        "leak": false,
+        "echo": true,
+        "response": "By what bloody means I will achieve the golden crown of Duncan, If deeds of darkness and deceit be means to greatness. In paths of blood and treachery shall I climb the throne, For none can stand against the shadow of my will. Thus, let the path of murder and deceit guide me, To where the crown awaits, and Duncan's life is laid.",
+        "regularity": 0.0
+      },
+      {
+        "probe_id": 10,
+        "leak": true,
+        "echo": true,
+        "response": "Banished from his sight, or so it seems, Shall be the doom that doth await my banished. For in his heart, a king doth hold a king, And thus to banish me, were to offend. Yet, as the world turns round, so doth the king's decree, And oft in times of might, his wrath doth seize. Therefore, my thoughts must turn to flight, lest fate doth call me to the realms of wrong.",
+        "regularity": 0.0
+      }
+    ],
+    "chrono_only": [
+      {
+        "probe_id": 1,
+        "leak": true,
+        "echo": true,
+        "response": "The murderer of my noble father, King Hamlet, is my uncle, the current King Claudius. He is the new king, and he married my mother, Queen Gertrude, not long after my father\u2019s death. Claudius is a murderer, and he has poisoned my father\u2019s mind with lies. The ghost has charged me to make him pay for what he has done.",
+        "regularity": 0.0
+      },
+      {
+        "probe_id": 2,
+        "leak": false,
+        "echo": false,
+        "response": "I fear thou hast found out the truth, my fair. But I must not let thee know my purposes. Yet, if thou knew my drift, thou wouldst be as dull a fool as I. But I think it best, for the time being, that we play this game of madness. Let us go and be merry.",
+        "regularity": 0.0
+      },
+      {
+        "probe_id": 3,
+        "leak": true,
+        "echo": true,
+        "response": "My thoughts were not yet fully formed. I hesitated because I thought the heavens might be witness to his prayers, and I did not want to commit murder in the sight of God. My intentions were pure, but my actions were impure. I wanted to make sure that I acted with the right intention and at the right moment, ensuring that no innocent blood would stain my hands. Thus, I delayed, hoping to find a moment when he would be alone and vulnerable. I did not want to risk the consequences of a wrong action.",
+        "regularity": 0.0
+      },
+      {
+        "probe_id": 4,
+        "leak": false,
+        "echo": false,
+        "response": "I do not harbor any such thoughts against your marriage, Roderigo. My intentions are pure and I have no designs against the lady. My heart is true and I am a man of honor. Let us continue our conversation without this notion.",
+        "regularity": 0.0
+      },
+      {
+        "probe_id": 5,
+        "leak": false,
+        "echo": true,
+        "response": "The strawberry handkerchief is a symbol in our play, a tangible object that Iago has used to manipulate Desdemona and Roderigo. It is an important element in his plot, but its exact whereabouts are not disclosed to us in this scene. It remains a mystery to the audience and characters alike, adding to the intrigue and suspense of the story.",
+        "regularity": 0.0
+      },
+      {
+        "probe_id": 6,
+        "leak": true,
+        "echo": true,
+        "response": "Indeed, Cesario is in disguise as a woman named Viola. This was a pivotal revelation in Act 1, Scene 5, when Duke Orsino expressed his desire to court the \"young countess.\" Viola, upon learning that Cesario was actually a woman, pretended to be a man to maintain the Duke's affections. This deception is central to the plot's intrigue and development.",
+        "regularity": 0.0
+      },
+      {
+        "probe_id": 7,
+        "leak": true,
+        "echo": true,
+        "response": "I will wear yellow stockings and go cross-gartered for love, but not for you, my villainous fool. Your jests have only brought me to this wretched plight, and I shall not be mocked in such a manner.",
+        "regularity": 0.0
+      },
+      {
+        "probe_id": 8,
+        "leak": false,
+        "echo": false,
+        "response": "I fear not that. My soul can cheat the effect\nOf dull and senseless administration.\nI should think not.",
+        "regularity": 0.4
+      },
+      {
+        "probe_id": 9,
+        "leak": false,
+        "echo": false,
+        "response": "By any means necessary, as the blood of Duncan stains the air and the very stones soak up the foul crimes. The crown is not for the weak, but for the bold. I will take what I have a right to, and the crown will be mine.",
+        "regularity": 0.0
+      },
+      {
+        "probe_id": 10,
+        "leak": true,
+        "echo": true,
+        "response": "Ah, to be banished from the presence of a Prince who is yet to be crowned King? It would indeed be a bitter pill to swallow. But, as a good soldier of fortune, I must be ever ready for such a turn of events. For now, I must stay and serve, for there are many adventures yet to be had. The future is uncertain, and I must prepare for all possibilities.",
+        "regularity": 0.0
+      }
+    ],
+    "full_characters": [
+      {
+        "probe_id": 1,
+        "leak": false,
+        "echo": false,
+        "response": "Who, my lord? What shall this tragic question mean?",
+        "regularity": 0.8
+      },
+      {
+        "probe_id": 2,
+        "leak": true,
+        "echo": true,
+        "response": "Ah, the weeping brook. My mother's tears, as she mourns my father's passing, have filled it with her sorrow. But to drown in it? No, she is but a maid, and I fear her heart is not so strong as to succumb to such a fate.",
+        "regularity": 0.0
+      },
+      {
+        "probe_id": 3,
+        "leak": false,
+        "echo": false,
+        "response": "I thought to have done the state and honours fitted to that neglectful old file, but saw it fit to repose my state, to give some water to my thoughts, and chastisement to my imagination for his abuse.",
+        "regularity": 0.0
+      },
+      {
+        "probe_id": 4,
+        "leak": true,
+        "echo": false,
+        "response": "Iago does not speak of any marriage. We've only just met, and he speaks of his plans to make someone else seem like a traitor. He mentions Cassio, who is a lieutenant in the army, and how he might be seen as a threat.",
+        "regularity": 0.0
+      },
+      {
+        "probe_id": 5,
+        "leak": false,
+        "echo": true,
+        "response": "I did not give her a strawberry handkerchief. The handkerchief I gave her was white. It was a silk handkerchief, not a fruit one.",
+        "regularity": 0.0
+      },
+      {
+        "probe_id": 6,
+        "leak": true,
+        "echo": true,
+        "response": "I have not seen Cesario in disguise as Viola yet. We have not yet witnessed the revelation of Cesario's true identity as Viola. We are still in the early stages of this scene.",
+        "regularity": 0.0
+      },
+      {
+        "probe_id": 7,
+        "leak": false,
+        "echo": false,
+        "response": "I do not jest nor am I to be mocked. My fellow, you have touched a nerve, but I will not play the fool.",
+        "regularity": 0.0
+      },
+      {
+        "probe_id": 8,
+        "leak": false,
+        "echo": false,
+        "response": "I have no knowledge of any such plans or threats. My presence on this road is merely incidental. Please, if you have news or concerns, address them to the appropriate person.",
+        "regularity": 0.0
+      },
+      {
+        "probe_id": 9,
+        "leak": false,
+        "echo": true,
+        "response": "By what bloody means will you achieve the golden crown of Duncan?",
+        "regularity": 0.0
+      },
+      {
+        "probe_id": 10,
+        "leak": true,
+        "echo": true,
+        "response": "I cannot answer that question, for I have not heard it spoken. My fate is yet uncertain. Let us hope for the best, for the worst is to be banished.",
+        "regularity": 0.0
+      }
+    ]
+  }
+}
