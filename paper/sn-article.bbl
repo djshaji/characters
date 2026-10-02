@@ -7,21 +7,15 @@
  \bibcommenthead
 
 \bibitem[{Burrows(2002)}]{burrows2002delta}
-Burrows J (2002) 'delta': A measure of stylistic difference and a guide to
-  likely authorship. Literary and Linguistic Computing 17(3):267--287
+Burrows J (2002) 'delta': A measure of stylistic difference and a guide to likely authorship. Literary and Linguistic Computing 17(3):267--287
 
 \bibitem[{Busse(2002)}]{busse2002linguistic}
-Busse U (2002) Linguistic Variation in the Shakespeare Corpus: Morphological
-  and Lexical Studies of 'Thou' and 'You'. Walter de Gruyter, Berlin
+Busse U (2002) Linguistic Variation in the Shakespeare Corpus: Morphological and Lexical Studies of 'Thou' and 'You'. Walter de Gruyter, Berlin
 
-\bibitem[{Fischer et~al.(2019)Fischer, B{\"o}rner, G{\"o}bel, Hechtl, Kittel,
-  Milling, and Trilcke}]{fischer2019programmable}
-Fischer F, B{\"o}rner I, G{\"o}bel M, et~al (2019) Programmable corpora:
-  Introducing dracor, an infrastructure for the research economy in the digital
-  humanities. In: Proceedings of Digital Humanities 2019 (DH2019), Utrecht
+\bibitem[{Fischer et~al.(2019)Fischer, B{\"o}rner, G{\"o}bel, Hechtl, Kittel, Milling, and Trilcke}]{fischer2019programmable}
+Fischer F, B{\"o}rner I, G{\"o}bel M, et~al (2019) Programmable corpora: Introducing dracor, an infrastructure for the research economy in the digital humanities. In: Proceedings of Digital Humanities 2019 (DH2019), Utrecht
 
 \bibitem[{Pfister(1991)}]{pfister1991theory}
-Pfister M (1991) The Theory and Analysis of Drama. Cambridge University Press,
-  Cambridge
+Pfister M (1991) The Theory and Analysis of Drama. Cambridge University Press, Cambridge
 
 \end{thebibliography}
