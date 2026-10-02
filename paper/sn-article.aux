@@ -19,8 +19,8 @@
 \@writefile{toc}{\contentsline {section}{\numberline {3}System Architecture \& Corpus Modeling}{5}{section.3}\protected@file@percent }
 \newlabel{sec3}{{3}{5}{System Architecture \& Corpus Modeling}{section.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Corpus Ingestion from Shakespeare DraCor}{5}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}The Stage-Presence Bipartite Graph}{5}{subsection.3.2}\protected@file@percent }
-\newlabel{sec3.2}{{3.2}{5}{The Stage-Presence Bipartite Graph}{subsection.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}The Character--Event Exposure Graph}{5}{subsection.3.2}\protected@file@percent }
+\newlabel{sec3.2}{{3.2}{5}{The Character--Event Exposure Graph}{subsection.3.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Chronologically Bounded Retrieval}{6}{subsection.3.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Early Modern Prosodic Scansion Engine}{6}{subsection.3.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4}Empirical Evaluation \& Ablation Study}{7}{section.4}\protected@file@percent }
@@ -31,8 +31,8 @@
 \newlabel{sec4.2}{{4.2}{7}{Ablation Study Results}{subsection.4.2}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Ablation study across 10 adversarial dramatic irony probes}}{8}{table.1}\protected@file@percent }
 \newlabel{tab:ablation}{{1}{8}{Ablation study across 10 adversarial dramatic irony probes}{table.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Ablation analysis across three system configurations on 10 adversarial dramatic irony probes. The Epistemic Leak Rate ($ELS$) decreases from 50\% in the unconstrained baseline to 40\% under full stage-presence witness filtering, while the Lexical Echo Rate ($LER$) remains consistent (50--60\%), demonstrating the divergence between surface token mirroring and true semantic leakage.}}{8}{figure.1}\protected@file@percent }
-\newlabel{fig1}{{1}{8}{Ablation analysis across three system configurations on 10 adversarial dramatic irony probes. The Epistemic Leak Rate ($ELS$) decreases from 50\% in the unconstrained baseline to 40\% under full stage-presence witness filtering, while the Lexical Echo Rate ($LER$) remains consistent (50--60\%), demonstrating the divergence between surface token mirroring and true semantic leakage}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Ablation analysis across three system configurations on 10 adversarial dramatic irony probes. The Epistemic Leak Rate ($ELS$) decreases from 50\% in the unconstrained baseline to 20\% under full stage-presence witness filtering (a 60\% relative reduction), while the Lexical Echo Rate ($LER$) remains consistent (20\%--30\%), demonstrating the divergence between surface token mirroring and true semantic leakage.}}{8}{figure.1}\protected@file@percent }
+\newlabel{fig1}{{1}{8}{Ablation analysis across three system configurations on 10 adversarial dramatic irony probes. The Epistemic Leak Rate ($ELS$) decreases from 50\% in the unconstrained baseline to 20\% under full stage-presence witness filtering (a 60\% relative reduction), while the Lexical Echo Rate ($LER$) remains consistent (20\%--30\%), demonstrating the divergence between surface token mirroring and true semantic leakage}{figure.1}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Audit of probe outcomes across experimental conditions}}{9}{table.2}\protected@file@percent }
 \newlabel{tab:probes}{{2}{9}{Audit of probe outcomes across experimental conditions}{table.2}{}}
 \citation{burrows2002delta}
@@ -40,16 +40,16 @@
 \newlabel{sec4.3}{{4.3}{10}{Semantic Ignorance vs. Lexical Echoing}{subsection.4.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Stylometric Proximity (Burrows' Delta)}{10}{subsection.4.4}\protected@file@percent }
 \newlabel{sec4.4}{{4.4}{10}{Stylometric Proximity (Burrows' Delta)}{subsection.4.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Baseline kernel density estimation of syllable counts per line across authentic Shakespearean blank verse in the database, demonstrating the decasyllabic reference peak.}}{11}{figure.2}\protected@file@percent }
-\newlabel{fig2}{{2}{11}{Baseline kernel density estimation of syllable counts per line across authentic Shakespearean blank verse in the database, demonstrating the decasyllabic reference peak}{figure.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Baseline kernel density estimation of syllable counts per line sampled from authentic Shakespearean blank verse in the DraCor corpus ($\mathcal  {D}_{\text  {verse}}$, $n \approx 78{,}000$ lines across 31,066 dialogue turns), demonstrating the canonical decasyllabic reference peak.}}{11}{figure.2}\protected@file@percent }
+\newlabel{fig2}{{2}{11}{Baseline kernel density estimation of syllable counts per line sampled from authentic Shakespearean blank verse in the DraCor corpus ($\mathcal {D}_{\text {verse}}$, $n \approx 78{,}000$ lines across 31,066 dialogue turns), demonstrating the canonical decasyllabic reference peak}{figure.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Limitations}{11}{section.5}\protected@file@percent }
 \newlabel{sec5}{{5}{11}{Limitations}{section.5}{}}
 \bibdata{sn-bibliography}
 \bibcite{burrows2002delta}{{1}{2002}{{Burrows}}{{}}}
-\bibcite{busse2002linguistic}{{2}{2002}{{Busse}}{{}}}
-\bibcite{fischer2019programmable}{{3}{2019}{{Fischer et~al.}}{{Fischer, B{\"o}rner, G{\"o}bel, Hechtl, Kittel, Milling, and Trilcke}}}
 \@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{12}{section.6}\protected@file@percent }
 \newlabel{sec6}{{6}{12}{Conclusion}{section.6}{}}
 \@writefile{toc}{\contentsline {subparagraph}{Declarations}{12}{section*.2}\protected@file@percent }
+\bibcite{busse2002linguistic}{{2}{2002}{{Busse}}{{}}}
+\bibcite{fischer2019programmable}{{3}{2019}{{Fischer et~al.}}{{Fischer, B{\"o}rner, G{\"o}bel, Hechtl, Kittel, Milling, and Trilcke}}}
 \bibcite{pfister1991theory}{{4}{1991}{{Pfister}}{{}}}
 \gdef \@abspage@last{13}

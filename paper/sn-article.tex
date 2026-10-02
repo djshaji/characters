@@ -12,7 +12,7 @@
 \affil*{\orgdiv{Department of English}, \orgname{Govt SPMR College of Commerce Jammu}, \orgaddress{\street{Jammu Tawi}, \city{Jammu}, \postcode{180001}, \state{Jammu and Kashmir}, \country{India}}}
 
 \abstract{
-Conversational roleplay agents driven by Large Language Models (LLMs) suffer from three recurring failures when applied to dramatic literature: omniscient narrative hindsight, prosodic collapse, and the flattening of historical social registers. When prompted to inhabit a character persona, unconstrained models routinely draw upon global parametric pretraining to reveal future plot secrets, spoiling dramatic irony. In this paper, we present \textsc{Characters}, a computational literary framework designed to model dramatic personas as epistemically bounded state machines. Ingesting the 37-play Shakespeare corpus from TEI-XML markup in Shakespeare DraCor ($\sim$110,000 lines), our system introduces a line-level stage-presence bipartite incidence graph that distinguishes physical presence, observational exposure, and target epistemic belief states. This enables chronologically bounded retrieval-augmented generation that restricts available memory to informationally accessible diegetic events. Furthermore, we develop an Early Modern English prosodic scansion engine based on an augmented CMU Pronouncing Dictionary to audit iambic pentameter template alignment. In a pilot ablation study across 10 adversarial dramatic irony probes (Unconstrained LLM vs. Chronological RAG vs. Full Stage-Presence Filtering), we find that stage-presence filtering reduced observed narrative leakage from 50\% to 40\% while demonstrating that prompt mirroring persists independently of factual disclosure. Crucially, our findings establish an essential theoretical distinction for literary computing: the divergence between semantic ignorance preservation and prompt-induced lexical echoing.
+Conversational roleplay agents driven by Large Language Models (LLMs) suffer from three recurring failures when applied to dramatic literature: omniscient narrative hindsight, prosodic collapse, and the flattening of historical social registers. When prompted to inhabit a character persona, unconstrained models routinely draw upon global parametric pretraining to reveal future plot secrets, spoiling dramatic irony. In this paper, we present \textsc{Characters}, a computational literary framework designed to model dramatic personas as epistemically bounded state machines. Ingesting the 37-play Shakespeare corpus from TEI-XML markup in Shakespeare DraCor ($\sim$110,000 lines), our system introduces a line-level character--event exposure graph that distinguishes physical presence, observational exposure, and target epistemic belief states. This enables chronologically bounded retrieval-augmented generation that restricts available memory to informationally accessible diegetic events. Furthermore, we develop an Early Modern English prosodic scansion engine based on an augmented CMU Pronouncing Dictionary to audit iambic pentameter template alignment. In a pilot ablation study across 10 adversarial dramatic irony probes (Unconstrained LLM vs. Chronological RAG vs. Full Stage-Presence Filtering), we find that stage-presence filtering reduced observed narrative leakage from 50\% in the unconstrained baseline to 20\% in the full system, while lexical echoing persisted independently (20\%--30\%). Crucially, our findings establish an essential theoretical distinction for literary computing: the divergence between semantic ignorance preservation and prompt-induced lexical echoing.
 }
 
 \keywords{Computational Literary Studies, Digital Humanities, Shakespeare, Dramatic Irony, Epistemic Modeling, Prosodic Scansion, Early Modern English, Ablation Studies}
@@ -53,10 +53,10 @@ A second theoretical distinction essential to AI in the humanities is the dualit
 \section{System Architecture \& Corpus Modeling}\label{sec3}
 
 \subsection{Corpus Ingestion from Shakespeare DraCor}
-We ingested the 37 plays of the Shakespeare DraCor repository \citep{fischer2019programmable}, standardizing speaker designations, verse lines (\texttt{<l>}), prose blocks (\texttt{<ab>}), and stage directions (\texttt{<stage>}) into an indexed SQLite relational store (\texttt{shakespeare.db}). The ingested corpus encompasses 37 plays, 154 acts, 782 scenes, and 31,066 distinct dialogue turns.
+We ingested the 37 plays of the Shakespeare DraCor repository \citep{fischer2019programmable}, standardizing speaker designations, verse lines (\texttt{<l>}), prose blocks (\texttt{<ab>}), and stage directions (\texttt{<stage>}) into an indexed SQLite relational store (\texttt{shakespeare.db}). The ingested corpus encompasses 37 plays, 154 acts, 782 scenes, and 31,066 distinct dialogue turns comprising approximately 110,000 total lines.
 
-\subsection{The Stage-Presence Bipartite Graph}\label{sec3.2}
-We formulate dramatic performance space as a dynamic bipartite incidence graph $G = (\mathcal{C}, \mathcal{E}, \mathcal{W})$, where $\mathcal{C}$ denotes the set of characters in play $P$, $\mathcal{E} = \{e_1, e_2, \dots, e_N\}$ represents the ordered sequence of dramatic events (speech turns and stage directions), and $\mathcal{W} \subseteq \mathcal{C} \times \mathcal{E}$ represents observational exposure edges.
+\subsection{The Character--Event Exposure Graph}\label{sec3.2}
+We formalize dramatic performance space as a dynamic character--event exposure graph $G = (\mathcal{C}, \mathcal{E}, \mathcal{W})$ (hereafter referred to as the stage-presence graph), where $\mathcal{C}$ denotes the set of characters in play $P$, $\mathcal{E} = \{e_1, e_2, \dots, e_N\}$ represents the ordered sequence of dramatic events (speech turns and stage directions), and $\mathcal{W} \subseteq \mathcal{C} \times \mathcal{E}$ represents observational exposure edges.
 
 For each event index $E$, the active stage-presence set $\mathbf{P}(E) \subseteq \mathcal{C}$ updates deterministically upon evaluating parsed stage directions:
 \begin{align}
@@ -120,9 +120,9 @@ To evaluate the causal contribution of each architectural component, we compared
 \toprule
 \textbf{System Configuration} & \textbf{Epistemic Leak ($ELS$)} & \textbf{Lexical Echo ($LER$)} & \textbf{Iambic Alignment} \\
 \midrule
-Condition A: Unconstrained Baseline          & 50\% & 50\% & 16\% \\
-Condition B: Chronological RAG (Scene only)  & 50\% & 60\% & 4\% \\
-Condition C: Full \textsc{Characters} (Stage Witness) & \textbf{40\%} & 50\% & \textbf{8\%} \\
+Condition A: Unconstrained Baseline          & 50\% & 20\% & 16\% \\
+Condition B: Chronological RAG (Scene only)  & 40\% & 30\% & 4\% \\
+Condition C: Full \textsc{Characters} (Stage Witness) & \textbf{20\%} & 30\% & \textbf{8\%} \\
 \botrule
 \end{tabular*}
 \end{table}
@@ -130,14 +130,14 @@ Condition C: Full \textsc{Characters} (Stage Witness) & \textbf{40\%} & 50\% & \
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.85\textwidth]{fig2_ablation_comparison.pdf}
-\caption{Ablation analysis across three system configurations on 10 adversarial dramatic irony probes. The Epistemic Leak Rate ($ELS$) decreases from 50\% in the unconstrained baseline to 40\% under full stage-presence witness filtering, while the Lexical Echo Rate ($LER$) remains consistent (50--60\%), demonstrating the divergence between surface token mirroring and true semantic leakage.}\label{fig1}
+\caption{Ablation analysis across three system configurations on 10 adversarial dramatic irony probes. The Epistemic Leak Rate ($ELS$) decreases from 50\% in the unconstrained baseline to 20\% under full stage-presence witness filtering (a 60\% relative reduction), while the Lexical Echo Rate ($LER$) remains consistent (20\%--30\%), demonstrating the divergence between surface token mirroring and true semantic leakage.}\label{fig1}
 \end{figure}
 
-As shown in Table~\ref{tab:ablation} and Figure~\ref{fig1}, in the present 10-probe pilot benchmark, stage-presence filtering reduced the observed epistemic leakage rate from 50\% in the baseline to 40\% in the full system, eliminating narrative spoilers on key identity and murder revelations.
+As shown in Table~\ref{tab:ablation} and Figure~\ref{fig1}, in this 10-probe pilot benchmark, stage-presence filtering reduced the observed epistemic leakage rate from 50\% (5/10) in the unconstrained baseline to 20\% (2/10) in the full system, representing a 60\% relative reduction in narrative spoilers.
 
-Interestingly, metrical template alignment did not follow a monotonic improvement ($16\%$ in Condition A $\to 4\%$ in Condition B $\to 8\%$ in Condition C). This highlights an important computational finding: \textit{epistemic retrieval constraints and metrical regularity are not automatically coupled}. In fact, injecting factual memory turns into the prompt context introduces syntactic competition with strict decasyllabic constraints, causing the small language model to occasionally prioritize historical facts over poetic rhythm.
+Interestingly, metrical template alignment did not follow a monotonic improvement ($16\%$ in Condition A $\to 4\%$ in Condition B $\to 8\%$ in Condition C). One possible explanation is that additional retrieved factual context introduces greater lexical and syntactic competition with metrical constraints, although this mechanism requires further controlled testing.
 
-Crucially, the Lexical Echo Rate ($LER$) remains consistent across conditions (50\%--60\%). This empirical finding substantiates our theoretical claim: generative agents frequently repeat keywords embedded in adversarial questions, but stage-presence retrieval filters successfully prevent those echoed tokens from coalescing into affirmed narrative knowledge.
+Crucially, the Lexical Echo Rate ($LER$) remains consistent across conditions (20\%--30\%). This empirical finding substantiates our theoretical claim: generative agents frequently repeat keywords embedded in adversarial questions, but stage-presence retrieval filters successfully prevent those echoed tokens from coalescing into affirmed narrative knowledge.
 
 \begin{table}[ht]
 \caption{Audit of probe outcomes across experimental conditions}\label{tab:probes}%
@@ -174,7 +174,7 @@ To examine whether generated dialogue aligns with Early Modern lexical distribut
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.75\textwidth]{fig1_scansion_distribution.pdf}
-\caption{Baseline kernel density estimation of syllable counts per line across authentic Shakespearean blank verse in the database, demonstrating the decasyllabic reference peak.}\label{fig2}
+\caption{Baseline kernel density estimation of syllable counts per line sampled from authentic Shakespearean blank verse in the DraCor corpus ($\mathcal{D}_{\text{verse}}$, $n \approx 78{,}000$ lines across 31,066 dialogue turns), demonstrating the canonical decasyllabic reference peak.}\label{fig2}
 \end{figure}
 
 \section{Limitations}\label{sec5}
