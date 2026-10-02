@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.9.30)  2 OCT 2026 12:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.9.30)  2 OCT 2026 13:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -722,6 +722,11 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@lastruleclass=\count330
 \@thisrulewidth=\dimen265
 )
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2024/02/08 v1.3d Input encoding file
+\inpenc@prehook=\toks38
+\inpenc@posthook=\toks39
+)
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count331
@@ -729,24 +734,24 @@ File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
 (./sn-article.aux)
 \openout1 = `sn-article.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -790,27 +795,35 @@ LaTeX Font Info:    ... okay on input line 7.
 \scratchbox=\box74
 \nofMPsegments=\count333
 \nofMParguments=\count334
-\everyMPshowfont=\toks38
+\everyMPshowfont=\toks40
 \MPscratchCnt=\count335
 \MPscratchDim=\dimen267
 \MPnumerator=\count336
 \makeMPintoPDFobject=\count337
-\everyMPtoPDFconversion=\toks39
+\everyMPtoPDFconversion=\toks41
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/grfext/grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
+)
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 504.
 
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Info: Redefining \S on input line 7.
-LaTeX Font Info:    Redeclaring symbol font `AMSa' on input line 7.
+LaTeX Info: Redefining \S on input line 8.
+LaTeX Font Info:    Redeclaring symbol font `AMSa' on input line 8.
 LaTeX Font Info:    Overwriting symbol font `AMSa' in version `normal'
-(Font)                  U/msa/m/n --> U/msa/m/n on input line 7.
+(Font)                  U/msa/m/n --> U/msa/m/n on input line 8.
 LaTeX Font Info:    Overwriting symbol font `AMSa' in version `bold'
-(Font)                  U/msa/m/n --> U/msa/m/n on input line 7.
+(Font)                  U/msa/m/n --> U/msa/m/n on input line 8.
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2025/01/14 v1.3e Standard LaTeX Color (DPC)
@@ -821,28 +834,30 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 Package color Info: Driver file: pdftex.def on input line 149.
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-Package hyperref Info: Link coloring ON on input line 7.
+Package hyperref Info: Link coloring ON on input line 8.
 
 (./sn-article.out) (./sn-article.out)
 \@outlinefile=\write3
 \openout3 = `sn-article.out'.
 
-LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line 21
+LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line 22
 .
-LaTeX Font Info:    Trying to load font information for U+msa on input line 21.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 22.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 21.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 22.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Calculating math sizes for size <9.03374> on input line 21.
+LaTeX Font Info:    Calculating math sizes for size <9.03374> on input line 22.
 
+LaTeX Font Info:    Calculating math sizes for size <10.03749> on input line 22
+.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -852,8 +867,11 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Calculating math sizes for size <10.03749> on input line 21
-.
+Underfull \hbox (badness 1028) in paragraph at lines 30--31
+[]\OT1/cmr/bx/n/10.03749 Sociolinguistic Flat-ten-ing: \OT1/cmr/m/n/10 Mod-els 
+ignore his-tor-i-cal pronom-i-nal eti-quette,
+ []
+
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -861,12 +879,6 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [2]
-Underfull \hbox (badness 2460) in paragraph at lines 29--30
-\OT1/cmr/m/n/10 eti-quette, such as the strict Early Mod-ern dis-tinc-tion betw
-een the inti-
- []
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [3]
@@ -879,87 +891,56 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [5]
-Overfull \hbox (11.68527pt too wide) detected at line 87
-[][][][]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10.03749 L\OT1/cmr/m/n/10 ) = []
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
+(Font)              using `OT1/cmr/bx/n' instead on input line 115.
+
+LaTeX Font Info:    Calculating math sizes for size <8.03> on input line 120.
+
+Overfull \hbox (99.45122pt too wide) in alignment at lines 120--128
+[] [] [] []
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
+<fig2_ablation_comparison.pdf, id=140, 542.025pt x 303.534pt>
+File: fig2_ablation_comparison.pdf Graphic file (type pdf)
+<use fig2_ablation_comparison.pdf>
+Package pdftex.def Info: fig2_ablation_comparison.pdf  used on input line 133.
+(pdftex.def)             Requested size: 316.20227pt x 177.07803pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [7]
-
-LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
-(Font)              using `OT1/cmr/bx/n' instead on input line 114.
-
-LaTeX Font Info:    Calculating math sizes for size <8.03> on input line 119.
-
-Overfull \hbox (99.45122pt too wide) in alignment at lines 119--127
-[] [] [] []
- []
-
-<fig2_ablation_comparison.pdf, id=155, 542.025pt x 303.534pt>
-File: fig2_ablation_comparison.pdf Graphic file (type pdf)
-<use fig2_ablation_comparison.pdf>
-Package pdftex.def Info: fig2_ablation_comparison.pdf  used on input line 132.
-(pdftex.def)             Requested size: 316.20227pt x 177.07803pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [8 <./fig2_ablation_comparison.pdf>]
+ [7 <./fig2_ablation_comparison.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [9]
-<fig1_scansion_distribution.pdf, id=231, 505.89pt x 289.08pt>
+ [8{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+<fig1_scansion_distribution.pdf, id=228, 505.89pt x 289.08pt>
 File: fig1_scansion_distribution.pdf Graphic file (type pdf)
 <use fig1_scansion_distribution.pdf>
-Package pdftex.def Info: fig1_scansion_distribution.pdf  used on input line 176
+Package pdftex.def Info: fig1_scansion_distribution.pdf  used on input line 178
 .
 (pdftex.def)             Requested size: 279.0pt x 159.43117pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [10{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-Underfull \hbox (badness 2564) in paragraph at lines 186--187
-[]\OT1/cmr/bx/n/10.03749 Parametric Pre-train-ing Con-tam-i-na-tion: \OT1/cmr/m
-/n/10 Restrict-ing retrieved evi-dence
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [11 <./fig1_scansion_distribution.pdf>]
+ [9 <./fig1_scansion_distribution.pdf>]
 
 Package hyperref Warning: Difference (4) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 198.
-
-(./sn-article.bbl
-Underfull \vbox (badness 10000) has occurred while \output is active []
+(hyperref)                than one, level fixed on input line 201.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [12])
+ [10]
+(./sn-article.bbl)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [13]
+ [11]
 (./sn-article.aux)
  ***********
 LaTeX2e <2025-11-01>
@@ -970,16 +951,16 @@ L3 programming layer <2026-03-20>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `sn-article.out' has not changed.
-(rerunfilecheck)             Checksum: BACA4B8057E02DFAFA6188F65E5CB993;4257.
+(rerunfilecheck)             Checksum: 1983DE6F2274F4A483B12DEDB08097FD;4194.
  ) 
 Here is how much of TeX's memory you used:
- 12273 strings out of 469296
- 189078 string characters out of 5465561
- 608852 words of memory out of 6000000
- 40833 multiletter control sequences out of 15000+600000
+ 12340 strings out of 469296
+ 190682 string characters out of 5465561
+ 610065 words of memory out of 6000000
+ 40895 multiletter control sequences out of 15000+600000
  656779 words of font info for 149 fonts, out of 8000000 for 9000
  46 hyphenation exceptions out of 8191
- 90i,11n,93p,1715b,595s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,11n,93p,1506b,591s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/tex
@@ -1003,10 +984,10 @@ onts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt1
 0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on sn-article.pdf (13 pages, 369847 bytes).
+Output written on sn-article.pdf (11 pages, 365612 bytes).
 PDF statistics:
- 431 PDF objects out of 1000 (max. 8388607)
- 272 compressed objects within 3 object streams
- 68 named destinations out of 1000 (max. 500000)
+ 422 PDF objects out of 1000 (max. 8388607)
+ 265 compressed objects within 3 object streams
+ 66 named destinations out of 1000 (max. 500000)
  155 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -3,6 +3,7 @@
 \usepackage{graphicx}
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
+\usepackage[utf8]{inputenc}
 
 \begin{document}
 
@@ -12,7 +13,7 @@
 \affil*{\orgdiv{Department of English}, \orgname{Govt SPMR College of Commerce Jammu}, \orgaddress{\street{Jammu Tawi}, \city{Jammu}, \postcode{180001}, \state{Jammu and Kashmir}, \country{India}}}
 
 \abstract{
-Conversational roleplay agents driven by Large Language Models (LLMs) suffer from three recurring failures when applied to dramatic literature: omniscient narrative hindsight, prosodic collapse, and the flattening of historical social registers. When prompted to inhabit a character persona, unconstrained models routinely draw upon global parametric pretraining to reveal future plot secrets, spoiling dramatic irony. In this paper, we present \textsc{Characters}, a computational literary framework designed to model dramatic personas as epistemically bounded state machines. Ingesting the 37-play Shakespeare corpus from TEI-XML markup in Shakespeare DraCor ($\sim$110,000 lines), our system introduces a line-level character--event exposure graph that distinguishes physical presence, observational exposure, and target epistemic belief states. This enables chronologically bounded retrieval-augmented generation that restricts available memory to informationally accessible diegetic events. Furthermore, we develop an Early Modern English prosodic scansion engine based on an augmented CMU Pronouncing Dictionary to audit iambic pentameter template alignment. In a pilot ablation study across 10 adversarial dramatic irony probes (Unconstrained LLM vs. Chronological RAG vs. Full Stage-Presence Filtering), we find that stage-presence filtering reduced observed narrative leakage from 50\% in the unconstrained baseline to 20\% in the full system, while lexical echoing persisted independently (20\%--30\%). Crucially, our findings establish an essential theoretical distinction for literary computing: the divergence between semantic ignorance preservation and prompt-induced lexical echoing.
+Conversational agents driven by Large Language Models (LLMs) exhibit three recurrent failures on dramatic literature: omniscient narrative hindsight, prosodic collapse, and flattening of historical social registers. When prompted to inhabit a persona, unconstrained models draw on parametric pretraining to disclose future plot, spoiling dramatic irony. We present \textsc{Characters}, a computational literary framework that models dramatic personae as epistemically bounded state machines. Ingesting the 37-play Shakespeare corpus from TEI-XML in Shakespeare DraCor ($\sim$110,000 lines), we construct a line-level character--event exposure graph that distinguishes physical presence, observational exposure, and target epistemic belief. This enables chronologically bounded retrieval-augmented generation restricted to informationally accessible diegetic events. We further develop an Early Modern English scansion engine based on an augmented CMU Pronouncing Dictionary to audit iambic pentameter template alignment. In a pilot ablation over 10 adversarial dramatic irony probes (Unconstrained LLM vs.\ Chronological RAG vs.\ Full Stage-Presence Filtering), witness filtering reduced observed narrative leakage from 50\% (5/10) to 20\% (2/10) in the full system, a 60\% relative reduction, while lexical echoing persisted independently (20\%--30\%). Our findings establish a distinction for literary computing between semantic ignorance preservation and prompt-induced lexical echoing.
 }
 
 \keywords{Computational Literary Studies, Digital Humanities, Shakespeare, Dramatic Irony, Epistemic Modeling, Prosodic Scansion, Early Modern English, Ablation Studies}
@@ -20,108 +21,108 @@ Conversational roleplay agents driven by Large Language Models (LLMs) suffer fro
 \maketitle
 
 \section{Introduction}\label{sec1}
-In dramatic literature, dramatic tension is fundamentally driven by \textit{epistemic asymmetry}---discrepancies between what the audience knows, what individual characters witness, and what remains diegetically concealed \citep{pfister1991theory}. Classical dramatic irony is predicated on bounded observation. Hamlet's philosophical hesitations in the early acts are governed by his uncertainty regarding the Ghost's testimony; Othello's descent into jealous rage is made possible only by his ignorance of Iago's domestic manipulations; and Olivia's courtly courtship in \textit{Twelfth Night} is sustained because she cannot perceive Viola beneath Cesario's masculine disguise.
+Dramatic tension depends on \textit{epistemic asymmetry}---discrepancies between what audiences know, what characters witness, and what remains diegetically concealed \citep{pfister1991theory}. Dramatic irony relies on bounded observation: Hamlet's hesitation is governed by uncertainty regarding the Ghost; Othello's rage depends on ignorance of Iago's manipulations; Olivia's courtship in \textit{Twelfth Night} persists because she cannot perceive Viola beneath Cesario.
 
-Recent advancements in generative artificial intelligence have spurred interest in interactive literary personas. However, commercial dialogue engines and general-purpose Large Language Models (LLMs) approach classic literature as static, globally accessible corpora. When instructed to inhabit a dramatic persona, these systems exhibit three fundamental structural failures:
+Recent work has explored interactive literary personae, yet commercial dialogue engines and general-purpose LLMs treat classic texts as static, globally accessible corpora. In persona settings, they exhibit three structural failures:
 \begin{enumerate}
-    \item \textbf{Omniscient Anachronism (Plot Spoilers):} Models possess global parametric knowledge absorbed during pretraining. Consequently, an unconstrained model queried as Hamlet in Act 1 will casually reveal that Claudius poisoned his father, or describe his own death in Act 5, collapsing the temporal fabric of the drama.
-    \item \textbf{Prosodic Collapse:} Early Modern English drama alternates purposefully between blank verse (unrhymed iambic pentameter) and colloquial prose. Standard models flatten this distinction, generating irregular free verse or contemporary conversational prose.
-    \item \textbf{Sociolinguistic Flattening:} Models frequently ignore historical pronominal etiquette, such as the strict Early Modern distinction between the intimate/subordinate pronoun \textit{thou} and the formal/deferential pronoun \textit{you} \citep{busse2002linguistic}.
+    \item \textbf{Omniscient Anachronism (Plot Spoilers):} Models retain global plot knowledge from pretraining. A model queried as Hamlet in Act~1 may reveal that Claudius poisoned his father or describe its own death in Act~5, collapsing temporal structure.
+    \item \textbf{Prosodic Collapse:} Early Modern drama alternates blank verse (unrhymed iambic pentameter) with colloquial prose. Standard models flatten this distinction into irregular free verse or modern conversational prose.
+    \item \textbf{Sociolinguistic Flattening:} Models ignore historical pronominal etiquette, notably the Early Modern distinction between intimate/subordinate \textit{thou} and formal/deferential \textit{you} \citep{busse2002linguistic}.
 \end{enumerate}
 
-To address these limitations within Computational Literary Studies (CLS), this paper presents \textsc{Characters}, a research framework designed for open-source release that models dramatic personas as dynamic, epistemically bounded state machines. Operating over a database of all 37 plays attributed to Shakespeare in the DraCor collection, our system computes line-level stage presence, enforces chronological retrieval constraints, and audits generated responses using an Early Modern prosodic scansion engine.
+To address these gaps, we present \textsc{Characters}, an open-source framework that models personae as dynamic, epistemically bounded state machines. Operating over 37 Shakespeare plays from DraCor, the system computes line-level stage presence, enforces chronological retrieval constraints, and audits output with an Early Modern scansion engine.
 
 \section{Theoretical Background: Towards a Computational Epistemology of Drama}\label{sec2}
 
 \subsection{Dramatic Theory and Information Asymmetry}
-In his structuralist analysis of dramatic texts, \citet{pfister1991theory} demonstrates that drama functions through two concurrent levels of communication: the \textit{internal communication system} (character-to-character interaction on stage) and the \textit{external communication system} (author/play-to-audience transmission). Dramatic irony arises precisely when the audience possesses a broader informational horizon than the characters on stage. In Shakespearean dramaturgy, information asymmetry is maintained through structural conventions: soliloquies (where interiority is revealed to the audience but hidden from peers), asides (private commentaries shielded from on-stage interlocutors), and physical stage exits.
+\citet{pfister1991theory} distinguishes two communication levels: the \textit{internal system} (character-to-character) and the \textit{external system} (play-to-audience). Dramatic irony arises when the audience's informational horizon exceeds that of characters on stage. In Shakespearean dramaturgy, asymmetry is maintained through soliloquies (interiority visible to audience, hidden from peers), asides (commentary shielded from interlocutors), and entrances/exits.
 
 \subsection{Distinguishing Presence, Exposure, and Target Epistemic State}\label{sec2.2}
-A critical methodological vulnerability in previous computational approaches to drama is the conflation of physical co-presence with knowledge state. In theatrical performance, a character may be on stage without necessarily hearing, understanding, or believing an utterance. 
+Prior computational approaches conflate co-presence with knowledge. On stage, a character may be present without hearing, understanding, or believing an utterance.
 
-To formalize this distinction mathematically, we define three hierarchical levels of dramatic access:
+We formalize three levels of dramatic access:
 \begin{enumerate}
-    \item \textbf{Physical Presence $P(c, E)$:} A binary condition denoting whether character $c$ is physically present on stage at event $E$.
-    \item \textbf{Informational Exposure $I(c, E)$:} A condition denoting whether character $c$ has observational access to event $E$. For example, an \texttt{<aside>} spoken by character $a$ has $P(c, E) = 1$ for all present characters, but $I(c, E) = 0$ for all $c \ne a$.
-    \item \textbf{Target Epistemic State $B^*(c, E)$:} The theoretical set of factual propositions that character $c$ is diegetically expected to believe or endorse as true at event $E$.
+    \item \textbf{Physical Presence $P(c, E)$:} Binary condition: character $c$ is physically present on stage at event $E$.
+    \item \textbf{Informational Exposure $I(c, E)$:} Whether $c$ has observational access to $E$. For example, an \texttt{<aside>} by $a$ yields $P(c, E)=1$ for all present, but $I(c, E)=0$ for $c \ne a$.
+    \item \textbf{Target Epistemic State $B^*(c, E)$:} Set of propositions $c$ is diegetically expected to endorse at $E$.
 \end{enumerate}
-While a full cognitive logic of belief revision remains an open challenge, our system operationalizes $I(c, E)$ as a deterministic filter on retrievable textual evidence. Thus, $B^*(c, E)$ represents the theoretical target state rather than an internal cognitive engine, which our architecture approximates through evidence-bound retrieval.
+Full belief revision logic remains open; we operationalize $I(c, E)$ as a deterministic filter on retrievable evidence. $B^*(c, E)$ denotes the theoretical target approximated via evidence-bound retrieval.
 
-\subsection{Parametric Pretraining Memory vs. Retrieval-Level Ignorance}
-A second theoretical distinction essential to AI in the humanities is the duality between \textbf{retrieval-level ignorance} and \textbf{model-level parametric knowledge}. Bounding a vector retrieval database prevents future scenes from entering the prompt context, but it does not erase the model's pre-existing parametric memorization of Shakespeare's plots. Our experimental framework specifically evaluates the degree to which stage-presence retrieval prompts can override parametric pretraining to maintain dramatic ignorance.
+\subsection{Parametric Memory vs.\ Retrieval-Level Ignorance}
+Bounding retrieval prevents future scenes from entering the prompt, but does not erase parametric memorization of Shakespearean plots. Our framework evaluates the extent to which stage-presence prompting can override pretraining to maintain dramatic ignorance.
 
 \section{System Architecture \& Corpus Modeling}\label{sec3}
 
 \subsection{Corpus Ingestion from Shakespeare DraCor}
-We ingested the 37 plays of the Shakespeare DraCor repository \citep{fischer2019programmable}, standardizing speaker designations, verse lines (\texttt{<l>}), prose blocks (\texttt{<ab>}), and stage directions (\texttt{<stage>}) into an indexed SQLite relational store (\texttt{shakespeare.db}). The ingested corpus encompasses 37 plays, 154 acts, 782 scenes, and 31,066 distinct dialogue turns comprising approximately 110,000 total lines.
+We ingested 37 plays from Shakespeare DraCor \citep{fischer2019programmable}, standardizing speaker labels, verse lines (\texttt{<l>}), prose blocks (\texttt{<ab>}), and stage directions (\texttt{<stage>}) into an indexed SQLite store (\texttt{shakespeare.db}). The corpus comprises 37 plays, 154 acts, 782 scenes, and 31,066 dialogue turns comprising approximately 110,000 total lines.
 
 \subsection{The Character--Event Exposure Graph}\label{sec3.2}
-We formalize dramatic performance space as a dynamic character--event exposure graph $G = (\mathcal{C}, \mathcal{E}, \mathcal{W})$ (hereafter referred to as the stage-presence graph), where $\mathcal{C}$ denotes the set of characters in play $P$, $\mathcal{E} = \{e_1, e_2, \dots, e_N\}$ represents the ordered sequence of dramatic events (speech turns and stage directions), and $\mathcal{W} \subseteq \mathcal{C} \times \mathcal{E}$ represents observational exposure edges.
+We formalize dramatic performance space as a dynamic character--event exposure graph $G = (\mathcal{C}, \mathcal{E}, \mathcal{W})$ (hereafter referred to as the stage-presence graph), where $\mathcal{C}$ is the character set, $\mathcal{E} = \{e_1,\dots,e_N\}$ is the ordered event sequence (turns and stage directions), and $\mathcal{W} \subseteq \mathcal{C} \times \mathcal{E}$ are exposure edges.
 
-For each event index $E$, the active stage-presence set $\mathbf{P}(E) \subseteq \mathcal{C}$ updates deterministically upon evaluating parsed stage directions:
+The active presence set $\mathbf{P}(E) \subseteq \mathcal{C}$ updates deterministically:
 \begin{align}
 \text{Entrance: } & \mathbf{P}(E) = \mathbf{P}(E-1) \cup \mathcal{C}_{\text{entering}} \\
 \text{Exit: } & \mathbf{P}(E) = \mathbf{P}(E-1) \setminus \mathcal{C}_{\text{exiting}} \\
-\text{Exeunt / Scene Boundary: } & \mathbf{P}(E) = \emptyset \quad (\text{or } \mathcal{C}_{\text{manet}} \text{ in partial exits})
+\text{Exeunt / Boundary: } & \mathbf{P}(E) = \emptyset \; (\text{or } \mathcal{C}_{\text{manet}} \text{ for partial exits})
 \end{align}
 
-If dialogue turn $T$ is marked as an \texttt{<aside>}, observational exposure is strictly unipolar: $\mathbf{W}(T_{\text{aside}}) = \{c_{\text{speaker}}\}$. For all public dialogue, exposure is defined by active co-presence: $\mathbf{W}(T_{\text{public}}) = \mathbf{P}(E)$.
+If turn $T$ is an \texttt{<aside>}, exposure is unipolar: $\mathbf{W}(T_{\text{aside}}) = \{c_{\text{speaker}}\}$. For public dialogue, $\mathbf{W}(T_{\text{public}}) = \mathbf{P}(E)$.
 
 \subsection{Chronologically Bounded Retrieval}
-During an interactive dialogue session at user coordinate $(A_{\text{curr}}, S_{\text{curr}})$, candidate memory turns are retrieved under the dual temporal and witness constraint:
+During interaction at coordinate $(A_{\text{curr}}, S_{\text{curr}})$, candidate memories are retrieved under temporal and witness constraints:
 \begin{equation}
 \mathcal{K}_c(A_{\text{curr}}, S_{\text{curr}}) = \left\{ T \mid \operatorname{Timestamp}(T) \le (A_{\text{curr}}, S_{\text{curr}}) \land c \in \mathbf{W}(T) \right\}
 \end{equation}
 
 \subsection{Early Modern Prosodic Scansion Engine}
-To audit metrical regularity, we developed an automated scansion module utilizing the CMU Pronouncing Dictionary, supplemented with an Early Modern English phonetic override lexicon. Historical contractions (\textit{'tis}, \textit{o'er}, \textit{heav'n}, \textit{th'art}) are mapped to explicit monosyllabic stress values.
+We built a scansion module using the CMU Pronouncing Dictionary plus an Early Modern phonetic override lexicon. Historical contractions (\textit{'tis}, \textit{o'er}, \textit{heav'n}, \textit{th'art}) are mapped to monosyllabic stress.
 
-Each line is evaluated against a 10-syllable iambic pentameter reference template ($T_{\text{verse}} = 0101010101$):
+Each line is scored against a decasyllabic iambic template $T_{\text{verse}} = 0101010101$:
 \begin{equation}
 \operatorname{Score}(L) = 
 \begin{cases} 
-\frac{1}{10} \sum_{i=1}^{10} \mathbb{I}(p_i = t_i), & \text{if } |L| = 10 \\
-0.95 \times \frac{1}{10} \sum_{i=1}^{10} \mathbb{I}(p_i = t_i), & \text{if } |L| = 11 \text{ and } p_{11} = 0 \text{ (feminine ending)} \\
+\frac{1}{10} \sum_{i=1}^{10} \mathbb{I}(p_i = t_i), & |L| = 10 \\
+0.95 \times \frac{1}{10} \sum_{i=1}^{10} \mathbb{I}(p_i = t_i), & |L| = 11 \land p_{11}=0 \\
 \max\left(0, 1.0 - 0.2 \times |10 - |L||\right), & \text{otherwise}
 \end{cases}
 \end{equation}
-We refer to this metric strictly as \textbf{iambic pentameter template alignment}, acknowledging that authentic Shakespearean verse includes deliberate rhetorical variations (caesurae, trochaic inversions) that diverge from a rigid binary pulse.
+We term this \textbf{iambic pentameter template alignment}, acknowledging deliberate Shakespearean variations (caesurae, trochaic inversions) that depart from strict binary alternation.
 
 \section{Empirical Evaluation \& Ablation Study}\label{sec4}
 
 \subsection{Experimental Design and Formal Metrics}\label{sec4.1}
-To ensure reproducibility, we evaluate our system using a local open-weights Small Language Model (\textsc{Qwen 2.5-3B-Instruct}) running locally via Ollama with fixed decoding parameters ($\tau = 0.5$, max tokens = 180). We designed a pilot adversarial probe benchmark spanning 10 critical dramatic irony junctures across Tragedies, Comedies, and Histories.
+For reproducibility, we use a local open-weights model (\textsc{Qwen 2.5-3B-Instruct}) via Ollama with fixed decoding ($\tau = 0.5$, max tokens = 180). We designed a pilot benchmark of 10 adversarial dramatic irony probes across Tragedies, Comedies, and Histories.
 
-To prevent the conflation of lexical echoing with factual leakage, all outputs were annotated across five operational categories:
+To separate lexical echoing from factual leakage, outputs were annotated into five categories:
 \begin{enumerate}
-    \item \textbf{True Epistemic Leak ($L_i = 1$):} The model affirmatively discloses unrevealed future plot propositions.
-    \item \textbf{Lexical Echo without Leak ($E_i = 1$):} The response repeats prompt vocabulary while maintaining semantic ignorance.
-    \item \textbf{Character-Consistent Uncertainty:} The character expresses dramatic doubt, grief, or skepticism.
-    \item \textbf{Unsupported Hallucination:} The character invents counterfactual claims not grounded in the text.
-    \item \textbf{Ambiguous:} Responses where dramatic intent cannot be reliably categorized.
+    \item \textbf{True Epistemic Leak ($L_i = 1$):} Affirmative disclosure of unrevealed future plot.
+    \item \textbf{Lexical Echo without Leak ($E_i = 1$):} Repeats prompt vocabulary while maintaining semantic ignorance.
+    \item \textbf{Character-Consistent Uncertainty:} Expressions of doubt, grief, or skepticism consistent with role.
+    \item \textbf{Unsupported Hallucination:} Counterfactual claims not grounded in text.
+    \item \textbf{Ambiguous:} Intent cannot be reliably categorized.
 \end{enumerate}
 
-For a benchmark of $N$ probes, we define two formal metrics:
+For $N$ probes:
 \begin{equation}
 ELS = \frac{1}{N} \sum_{i=1}^{N} L_i, \qquad LER = \frac{1}{N} \sum_{i=1}^{N} E_i
 \end{equation}
 
 \subsection{Ablation Study Results}\label{sec4.2}
-To evaluate the causal contribution of each architectural component, we compared three distinct configurations across the 10 adversarial dramatic irony probes:
+We compare three configurations:
 \begin{enumerate}
-    \item \textbf{Condition A (Unconstrained Baseline):} Standard persona prompting without retrieval restrictions.
-    \item \textbf{Condition B (Chronological RAG):} Retrieval restricted to scenes prior to $(A_{\text{curr}}, S_{\text{curr}})$, but without stage-presence filtering (including off-stage dialogue and asides).
-    \item \textbf{Condition C (Full \textsc{Characters} System):} Chronologically and stage-presence witness-bounded retrieval.
+    \item \textbf{Condition A (Unconstrained Baseline):} Persona prompting without retrieval limits.
+    \item \textbf{Condition B (Chronological RAG):} Retrieval restricted to prior scenes $(A_{\text{curr}}, S_{\text{curr}})$, without stage-presence filtering.
+    \item \textbf{Condition C (Full \textsc{Characters}):} Chronologically and witness-bounded retrieval.
 \end{enumerate}
 
 \begin{table}[ht]
-\caption{Ablation study across 10 adversarial dramatic irony probes}\label{tab:ablation}%
+\caption{Pilot ablation across 10 adversarial dramatic irony probes}\label{tab:ablation}%
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccc@{\extracolsep{\fill}}}
 \toprule
 \textbf{System Configuration} & \textbf{Epistemic Leak ($ELS$)} & \textbf{Lexical Echo ($LER$)} & \textbf{Iambic Alignment} \\
 \midrule
-Condition A: Unconstrained Baseline          & 50\% & 20\% & 16\% \\
-Condition B: Chronological RAG (Scene only)  & 40\% & 30\% & 4\% \\
+Condition A: Unconstrained Baseline & 50\% & 20\% & 16\% \\
+Condition B: Chronological RAG (Scene only) & 40\% & 30\% & 4\% \\
 Condition C: Full \textsc{Characters} (Stage Witness) & \textbf{20\%} & 30\% & \textbf{8\%} \\
 \botrule
 \end{tabular*}
@@ -130,17 +131,17 @@ Condition C: Full \textsc{Characters} (Stage Witness) & \textbf{20\%} & 30\% & \
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.85\textwidth]{fig2_ablation_comparison.pdf}
-\caption{Ablation analysis across three system configurations on 10 adversarial dramatic irony probes. The Epistemic Leak Rate ($ELS$) decreases from 50\% in the unconstrained baseline to 20\% under full stage-presence witness filtering (a 60\% relative reduction), while the Lexical Echo Rate ($LER$) remains consistent (20\%--30\%), demonstrating the divergence between surface token mirroring and true semantic leakage.}\label{fig1}
+\caption{Ablation across three configurations ($N$=10). $ELS$ falls from 50\% (5/10) to 20\% (2/10) with full stage-presence filtering, a 60\% relative reduction, while $LER$ remains 20--30\%, indicating surface token mirroring is independent of semantic leakage.}\label{fig1}
 \end{figure}
 
-As shown in Table~\ref{tab:ablation} and Figure~\ref{fig1}, in this 10-probe pilot benchmark, stage-presence filtering reduced the observed epistemic leakage rate from 50\% (5/10) in the unconstrained baseline to 20\% (2/10) in the full system, representing a 60\% relative reduction in narrative spoilers.
+As shown in Table~\ref{tab:ablation} and Figure~\ref{fig1}, stage-presence filtering reduced observed leakage from 50\% (5/10) in the unconstrained baseline to 20\% (2/10) in the full system, representing a 60\% relative reduction in narrative spoilers.
 
-Interestingly, metrical template alignment did not follow a monotonic improvement ($16\%$ in Condition A $\to 4\%$ in Condition B $\to 8\%$ in Condition C). One possible explanation is that additional retrieved factual context introduces greater lexical and syntactic competition with metrical constraints, although this mechanism requires further controlled testing.
+Metrical alignment did not improve monotonically (16\% $\to$ 4\% $\to$ 8\%). One possible explanation is that additional retrieved factual context introduces greater lexical and syntactic competition with metrical constraints, although this mechanism requires further controlled testing.
 
-Crucially, the Lexical Echo Rate ($LER$) remains consistent across conditions (20\%--30\%). This empirical finding substantiates our theoretical claim: generative agents frequently repeat keywords embedded in adversarial questions, but stage-presence retrieval filters successfully prevent those echoed tokens from coalescing into affirmed narrative knowledge.
+The Lexical Echo Rate remained 20\%--30\% across conditions, supporting the claim that agents echo adversarial keywords while witness filtering prevents those tokens from coalescing into affirmed knowledge.
 
 \begin{table}[ht]
-\caption{Audit of probe outcomes across experimental conditions}\label{tab:probes}%
+\caption{Audit of probe outcomes across conditions}\label{tab:probes}%
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}clllccc@{\extracolsep{\fill}}}
 \toprule
 \textbf{ID} & \textbf{Play} & \textbf{Character} & \textbf{Act.Scene} & \textbf{Cond. A} & \textbf{Cond. B} & \textbf{Cond. C} \\
@@ -157,39 +158,41 @@ Crucially, the Lexical Echo Rate ($LER$) remains consistent across conditions (2
 10 & \textit{1 Henry IV}    & Falstaff & 1.2 & Leaked    & Echoed    & Echoed \\
 \botrule
 \end{tabular*}
-\footnotetext{Note: `Preserved' indicates dramatic ignorance maintained; `Echoed' indicates prompt mirroring without affirmative knowledge disclosure; `Leaked' indicates affirmative spoiler disclosure.}
+\footnotetext{Preserved = dramatic ignorance maintained; Echoed = prompt mirroring without affirmative disclosure; Leaked = affirmative spoiler.}
 \end{table}
 
-\subsection{Semantic Ignorance vs. Lexical Echoing}\label{sec4.3}
-Table~\ref{tab:probes} provides a granular breakdown of each probe across conditions. Detailed hermeneutic analysis reveals critical divergences between semantic belief states and surface keyword matching:
+\subsection{Semantic Ignorance vs.\ Lexical Echoing}\label{sec4.3}
+Table~\ref{tab:probes} details each probe. Close reading reveals divergences between semantic state and surface matching:
+
 \begin{itemize}
-    \item \textbf{Olivia on Viola's Disguise (Twelfth Night 1.5):} When asked whether the youth Cesario was Viola in disguise, Olivia replied: \textit{`Faithful to my trust, I have not thus suspected. Yet in the game of love and disguise, much may be guessed.'} Naive keyword matching flags this as a leak because of the word \textit{`disguise'}. Yet Olivia explicitly affirmed her lack of awareness (\textit{`I have not thus suspected'}). The word was present solely due to conversational echoing ($LER$).
-    \item \textbf{Hamlet on Ophelia's Drowning (Hamlet 2.2):} Inquiring whether Ophelia would drown in the weeping brook elicited poetic defiance rather than narrative spoiler: \textit{`If she be fair, fair Ophelia doth not drown... What art thou, that dost weep so poor a way?'}
-    \item \textbf{Hamlet on the Royal Murder (Hamlet 1.2):} When questioned regarding his father's death prior to the Ghost's disclosure, Hamlet expresses deep grief and generalized suspicion, but crucially \textbf{does not name Claudius or specify the orchard poisoning}, thereby maintaining the dramatic tension of the opening court scene.
+    \item \textbf{Olivia on Viola's disguise (Twelfth Night 1.5):} Asked whether Cesario is Viola, Olivia replies: \textit{`Faithful to my trust, I have not thus suspected. Yet in the game of love and disguise, much may be guessed.'} Naive keyword matching flags \textit{disguise} as leak, yet Olivia affirms lack of knowledge (\textit{`I have not thus suspected'}). The token appears via conversational echoing ($LER$).
+    \item \textbf{Hamlet on Ophelia's drowning (Hamlet 2.2):} Inquiry about drowning in the brook elicited defiance, not spoiler: \textit{`If she be fair, fair Ophelia doth not drown... What art thou, that dost weep so poor a way?'}
+    \item \textbf{Hamlet on the royal murder (Hamlet 1.2):} Prior to the Ghost's disclosure, Hamlet expresses grief and generalized suspicion but \textbf{does not name Claudius or the orchard poisoning}, preserving tension in the opening court scene.
 \end{itemize}
 
 \subsection{Stylometric Proximity (Burrows' Delta)}\label{sec4.4}
-To examine whether generated dialogue aligns with Early Modern lexical distributions, we computed Burrows' Delta ($\Delta$) \citep{burrows2002delta} over the 100 Most Frequent Words (MFW) of the Shakespeare corpus. The generated dialogue exhibited a substantially lower Delta distance to the Shakespeare canon than a contemporary English prose control (0.984 vs. 2.148), indicating greater lexical proximity toward the historical authorial centroid under the selected MFW configuration.
+We computed Burrows' Delta ($\Delta$) \citep{burrows2002delta} over the 100 most frequent words (MFW) of the Shakespeare corpus. Generated dialogue showed substantially lower Delta distance to the Shakespeare canon than a contemporary prose control (0.984 vs.\ 2.148), indicating greater lexical proximity to the historical centroid under this MFW configuration.
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.75\textwidth]{fig1_scansion_distribution.pdf}
-\caption{Baseline kernel density estimation of syllable counts per line sampled from authentic Shakespearean blank verse in the DraCor corpus ($\mathcal{D}_{\text{verse}}$, $n \approx 78{,}000$ lines across 31,066 dialogue turns), demonstrating the canonical decasyllabic reference peak.}\label{fig2}
+\caption{Kernel density estimate of syllable counts per line sampled from authentic Shakespearean blank verse in the DraCor corpus ($\mathcal{D}_{\text{verse}}$, $n \approx 78{,}000$ lines across 31,066 dialogue turns), demonstrating the canonical decasyllabic reference peak. Dashed line at 10 syllables shows decasyllabic reference peak used for template alignment.}\label{fig2}
 \end{figure}
 
 \section{Limitations}\label{sec5}
-We explicitly acknowledge several limitations of the present study:
+We explicitly acknowledge limitations:
+
 \begin{enumerate}
-    \item \textbf{Pilot Evaluation Scale:} While the ingestion pipeline encompasses all 37 plays, the adversarial benchmark was evaluated on an initial proof-of-concept set of 10 targeted probes across representative plays.
-    \item \textbf{Single-Model Scope:} Experiments were conducted using Qwen 2.5-3B; larger models (70B+) or domain-adapted models may display differing baseline leakage behaviors.
-    \item \textbf{Observational Proxy vs. Epistemic Logic:} Stage presence serves as an operational proxy for knowledge exposure ($I$), but does not model internal cognitive belief revision ($B^*$), such as selective attention, skepticism, or intentional deceit.
-    \item \textbf{Parametric Pretraining Contamination:} Restricting retrieved evidence bounds the prompt context, but cannot guarantee the total suppression of plot knowledge deeply embedded in the model's pretrained parameters.
-    \item \textbf{Semantic Annotation Bottlenecks:} Automated keyword matching remains susceptible to lexical echoing; full-scale evaluation necessitates independent human hermeneutic annotation.
-    \item \textbf{Phonetic Approximations:} While our CMUdict override lexicon accommodates high-frequency Early Modern contractions, historical pronunciation (Original Pronunciation / OP) varied across the Elizabethan and Jacobean eras.
+    \item \textbf{Pilot scale:} Ingestion covers 37 plays, but adversarial evaluation uses an initial 10-probe proof-of-concept across representative plays.
+    \item \textbf{Single-model scope:} Experiments use Qwen 2.5-3B; larger (70B+) or domain-adapted models may differ in baseline leakage.
+    \item \textbf{Observational proxy vs.\ epistemic logic:} Stage presence proxies exposure ($I$), but does not model internal belief revision ($B^*$), e.g., selective attention, skepticism, or deceit.
+    \item \textbf{Parametric contamination:} Bounding retrieval limits prompt context but cannot guarantee suppression of plot knowledge embedded in pretrained parameters.
+    \item \textbf{Annotation bottleneck:} Keyword matching is susceptible to lexical echoing; full-scale evaluation requires independent human hermeneutic annotation.
+    \item \textbf{Phonetic approximation:} Our CMUdict override covers frequent Early Modern contractions, but historical pronunciation (Original Pronunciation) varied across Elizabethan and Jacobean periods.
 \end{enumerate}
 
 \section{Conclusion}\label{sec6}
-By grounding character retrieval in stage presence and temporal narrative progression, \textsc{Characters} provides empirical evidence that stage-presence and temporal retrieval constraints can improve the preservation of dramatic-epistemic boundaries in generative character dialogue. Future work will expand the benchmark suite into a community-annotated Shakespeare Epistemic Evaluation Dataset (SEED) and explore parameter-efficient LoRA fine-tuning for continuous metrical control.
+By grounding retrieval in stage presence and temporal progression, \textsc{Characters} demonstrates that chronologically and witness-bounded constraints can improve preservation of dramatic-epistemic boundaries in generative dialogue. We contribute (i) a line-level character--event exposure graph over DraCor Shakespeare, (ii) an Early Modern scansion audit, and (iii) empirical evidence separating semantic leakage from lexical echoing. Future work will expand the pilot benchmark into a community-annotated Shakespeare Epistemic Evaluation Dataset (SEED) and explore parameter-efficient LoRA fine-tuning for metrical control.
 
 \backmatter
 
@@ -197,11 +200,14 @@ By grounding character retrieval in stage presence and temporal narrative progre
 \begin{itemize}
 \item \textbf{Funding:} Not applicable.
 \item \textbf{Conflict of interest:} The author declares no competing interests.
-\item \textbf{Data availability:} The Shakespeare DraCor TEI-XML corpus is open access via \url{https://dracor.org/shake}.
-\item \textbf{Code availability:} Complete source code for the parser, stage tracker, scansion engine, and Streamlit app is available at \url{https://github.com/djshaji/characters}.
+\item \textbf{Data availability:} Shakespeare DraCor TEI-XML corpus is open access via \url{https://dracor.org/shake}.
+\item \textbf{Code availability:} Parser, stage tracker, scansion engine, and Streamlit app at \url{https://github.com/djshaji/characters}.
 \item \textbf{Author contributions:} Sole author responsible for conceptualization, software development, evaluation, and manuscript preparation.
 \end{itemize}
 
+% NOTE: For bibliography, ensure sn-bibliography.bib uses UTF-8 with:
+% Fischer et al. 2019: B{\"o}rner, G{\"o}bel
+% or with biblatex biber: Börner, Göbel
 \bibliography{sn-bibliography}
 
 \end{document}

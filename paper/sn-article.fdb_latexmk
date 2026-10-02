@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex sn-article"] 1790926022.41219 "sn-article.aux" "sn-article.bbl" "sn-article" 1790926023.51497 0
+["bibtex sn-article"] 1790926382.67423 "sn-article.aux" "sn-article.bbl" "sn-article" 1790926383.56019 0
   "./sn-basic.bst" 1790790290.27484 35515 7cc706cef7829df727b1420a5d0e9fe4 ""
   "./sn-bibliography.bib" 1790866064.51586 2749 874f032b4f27334fb1778a5c370b258f ""
-  "sn-article.aux" 1790926023.3088 6309 1e38b048339e14f4b2572599bdf42ead "pdflatex"
+  "sn-article.aux" 1790926383.35724 6108 036ba1a425bf3df51530c47b2d6a2318 "pdflatex"
   (generated)
   "sn-article.bbl"
   "sn-article.blg"
   (rewritten before read)
-["pdflatex"] 1790926022.45718 "/home/djshaji/projects/characters/paper/sn-article.tex" "sn-article.pdf" "sn-article" 1790926023.51531 0
-  "/home/djshaji/projects/characters/paper/sn-article.tex" 1790926020.51485 22101 605062c844afc03d35d46a8c9454b98d ""
+["pdflatex"] 1790926382.70663 "/home/djshaji/projects/characters/paper/sn-article.tex" "sn-article.pdf" "sn-article" 1790926383.56056 0
+  "/home/djshaji/projects/characters/paper/sn-article.tex" 1790926381.08352 18284 4273741388a57f71e824fd32aa6ec630 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
@@ -113,6 +113,7 @@
   "/usr/share/texlive/texmf-dist/tex/latex/base/fix-cm.sty" 1784246400 14741 6ad9efc94c78efc56749b0f059d15546 ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/fleqn.clo" 1784246400 4832 b9e68358aa4c47c980e091e661f12c63 ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty" 1784246400 5525 1593ca62a2554dd7423fc8a4e5a82125 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty" 1784246400 5048 0270515b828149155424600fd2d58ac5 ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo" 1784246400 8448 686612a86f0e04f41ea577f5ec7e83d8 ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def" 1784246400 8090 bcb38b4f148e75e16d2c33225dbca53b ""
   "/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty" 1579038678 6078 f1cb470c9199e7110a27851508ed7a5c ""
@@ -130,6 +131,7 @@
   "/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx" 1667332637 2885 9c645d672ae17285bba324998918efd8 ""
   "/usr/share/texlive/texmf-dist/tex/latex/graphics/rotating.sty" 1748806692 7280 936827f0adb7f9ec1f98fe01cba3482b ""
   "/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty" 1748806692 4023 e66acf578d6b564c4670fb57ff336a7a ""
+  "/usr/share/texlive/texmf-dist/tex/latex/grfext/grfext.sty" 1575499774 7133 b94bbacbee6e4fdccdc7f810b2aec370 ""
   "/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty" 1580250785 17914 4c28a13fc3d975e6e81c9bea1d697276 ""
   "/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def" 1777145858 48140 974cb144aca24f4af37f434c0cfdfcc8 ""
   "/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty" 1777145858 222324 0031817ce93a9942f5c9df80df47244b ""
@@ -154,9 +156,9 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1790789985 2299046 4a50864c780ec68992d8304a9c9771bf ""
   "fig1_scansion_distribution.pdf" 1790788879.38919 19304 645ecdd02fe265521500407e61de655c ""
   "fig2_ablation_comparison.pdf" 1790925700.52173 18142 be5d3620365237fcd09f71824fde552b ""
-  "sn-article.aux" 1790926023.3088 6309 1e38b048339e14f4b2572599bdf42ead "pdflatex"
-  "sn-article.bbl" 1790926022.44781 1121 c92cddffbcabebea09c8e60c722df23d "bibtex sn-article"
-  "sn-article.out" 1790926023.3118 4257 baca4b8057e02dfafa6188f65e5cb993 "pdflatex"
+  "sn-article.aux" 1790926383.35724 6108 036ba1a425bf3df51530c47b2d6a2318 "pdflatex"
+  "sn-article.bbl" 1790926382.69925 1121 c92cddffbcabebea09c8e60c722df23d "bibtex sn-article"
+  "sn-article.out" 1790926383.35824 4194 1983de6f2274f4a483b12dedb08097fd "pdflatex"
   "sn-jnl.cls" 1790789021.93845 55857 c14ef9d34b3d95356940eaf177aff85f ""
   (generated)
   "sn-article.aux"
